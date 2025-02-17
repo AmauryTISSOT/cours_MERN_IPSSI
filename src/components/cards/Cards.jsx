@@ -1,14 +1,43 @@
 import styles from "./Cards.module.css";
 
 export const Cards = () => {
-    const title = "Lorem Ipsum";
-    const paragraph =
-        "Thalassius vero ea tempestate praefectus praetorio praesens ipse quoque adrogantis ingenii, considerans incitationem eius ad multorum augeri discrimina, non maturitate vel consiliis mitigabat, ut aliquotiens celsae potestates iras principum molliverunt, sed adversando iurgandoque cum parum congrueret, eum ad rabiem potius evibrabat, Augustum actus eius exaggerando creberrime docens, idque, incertum qua mente, ne lateret adfectans. quibus mox Caesar acrius efferatus, velut contumaciae quoddam vexillum altius erigens, sine respectu salutis alienae vel suae ad vertenda opposita instar rapidi fluminis irrevocabili impetu ferebatur.";
+    const tasks = [
+        {
+            id: 1,
+            title: "Faire la vaisselle",
+            isDone: false,
+        },
+        {
+            id: 2,
+            title: "Promener le chien",
+            isDone: true,
+        },
+        {
+            id: 1,
+            title: "Faire les courses",
+            isDone: false,
+        },
+    ];
 
     return (
-        <>
-            <h1>{title}</h1>
-            <p className={styles.paragraph}>{paragraph}</p>
-        </>
+        <div className={styles.container}>
+            <h2>Liste des tâches</h2>
+            <ul>
+                {tasks.map((task) => (
+                    <li key={task.id}>
+                        <span
+                            style={{
+                                textDecoration: task.isDone
+                                    ? "line-through"
+                                    : "none",
+                            }}
+                        >
+                            {task.title}
+                        </span>
+                        <span>{task.isDone ? "✅" : ""}</span>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };

@@ -9,9 +9,6 @@ function App() {
             <Header />
             <main className="main">
                 <Cards />
-                <Cards />
-                <Cards />
-                <Cards />
             </main>
             <Footer />
         </>
