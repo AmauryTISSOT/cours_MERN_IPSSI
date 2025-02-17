@@ -1,5 +1,30 @@
 import styles from "./Cards.module.css";
 
+const TaskItem = ({ title, isDone }) => (
+    <li>
+        <span style={{ textDecoration: isDone ? "line-through" : "none" }}>
+            {title} {isDone ? "✅" : "❌"}
+        </span>
+    </li>
+);
+
+const TaskList = ({ title, tasks, isDone }) => (
+    <div>
+        <h2>{title}</h2>
+        <ul className={styles.bulletPoint}>
+            {tasks
+                .filter((task) => task.isDone === isDone)
+                .map((task) => (
+                    <TaskItem
+                        key={`${task.id}-${task.title}`}
+                        title={task.title}
+                        isDone={task.isDone}
+                    />
+                ))}
+        </ul>
+    </div>
+);
+
 export const Cards = () => {
     const tasks = [
         {
@@ -21,42 +46,16 @@ export const Cards = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Liste des tâches à faire</h2>
-            <ul className={styles.bulletPoint}>
-                {tasks
-                    .filter((task) => !task.isDone)
-                    .map((task) => (
-                        <li key={task.id}>
-                            <span
-                                style={{
-                                    textDecoration: task.isDone
-                                        ? "line-through"
-                                        : "none",
-                                }}
-                            >
-                                {task.title} {task.isDone ? "✅" : "❌​"}
-                            </span>
-                        </li>
-                    ))}
-            </ul>
-            <h2>Liste des tâches effectuées</h2>
-            <ul className={styles.bulletPoint}>
-                {tasks
-                    .filter((task) => task.isDone)
-                    .map((task) => (
-                        <li key={task.id}>
-                            <span
-                                style={{
-                                    textDecoration: task.isDone
-                                        ? "line-through"
-                                        : "none",
-                                }}
-                            >
-                                {task.title} {task.isDone ? "✅" : ""}
-                            </span>
-                        </li>
-                    ))}
-            </ul>
+            <TaskList
+                title="Liste des tâches à faire"
+                tasks={tasks}
+                isDone={false}
+            />
+            <TaskList
+                title="Liste des tâches effectuées"
+                tasks={tasks}
+                isDone={true}
+            />
         </div>
     );
 };
