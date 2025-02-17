@@ -21,22 +21,41 @@ export const Cards = () => {
 
     return (
         <div className={styles.container}>
-            <h2>Liste des tâches</h2>
-            <ul>
-                {tasks.map((task) => (
-                    <li key={task.id}>
-                        <span
-                            style={{
-                                textDecoration: task.isDone
-                                    ? "line-through"
-                                    : "none",
-                            }}
-                        >
-                            {task.title}
-                        </span>
-                        <span>{task.isDone ? "✅" : ""}</span>
-                    </li>
-                ))}
+            <h2>Liste des tâches à faire</h2>
+            <ul className={styles.bulletPoint}>
+                {tasks
+                    .filter((task) => !task.isDone)
+                    .map((task) => (
+                        <li key={task.id}>
+                            <span
+                                style={{
+                                    textDecoration: task.isDone
+                                        ? "line-through"
+                                        : "none",
+                                }}
+                            >
+                                {task.title} {task.isDone ? "✅" : "❌​"}
+                            </span>
+                        </li>
+                    ))}
+            </ul>
+            <h2>Liste des tâches effectuées</h2>
+            <ul className={styles.bulletPoint}>
+                {tasks
+                    .filter((task) => task.isDone)
+                    .map((task) => (
+                        <li key={task.id}>
+                            <span
+                                style={{
+                                    textDecoration: task.isDone
+                                        ? "line-through"
+                                        : "none",
+                                }}
+                            >
+                                {task.title} {task.isDone ? "✅" : ""}
+                            </span>
+                        </li>
+                    ))}
             </ul>
         </div>
     );
