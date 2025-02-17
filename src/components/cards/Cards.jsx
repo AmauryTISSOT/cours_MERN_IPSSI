@@ -1,0 +1,14 @@
+import styles from "./Cards.module.css";
+
+export const Cards = () => {
+    const title = "Lorem Ipsum";
+    const paragraph =
+        "Thalassius vero ea tempestate praefectus praetorio praesens ipse quoque adrogantis ingenii, considerans incitationem eius ad multorum augeri discrimina, non maturitate vel consiliis mitigabat, ut aliquotiens celsae potestates iras principum molliverunt, sed adversando iurgandoque cum parum congrueret, eum ad rabiem potius evibrabat, Augustum actus eius exaggerando creberrime docens, idque, incertum qua mente, ne lateret adfectans. quibus mox Caesar acrius efferatus, velut contumaciae quoddam vexillum altius erigens, sine respectu salutis alienae vel suae ad vertenda opposita instar rapidi fluminis irrevocabili impetu ferebatur.";
+
+    return (
+        <>
+            <h1>{title}</h1>
+            <p className={styles.paragraph}>{paragraph}</p>
+        </>
+    );
+};
